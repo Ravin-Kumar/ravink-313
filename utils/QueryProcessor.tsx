@@ -20,13 +20,8 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("largest")) {
-    var a = query.substring(47).split(", ");
-    var b = parseInt(a[0]);
-    var c = parseInt(a[1]);
-    var d = parseInt(a[2].substring(0, a[2].length), 10);
-    if (b >= c && b >= d) { return b.toString(); }
-    else if (c >= b && c >= d) { return c.toString(); }
-    else { return d.toString(); }
+    var a = query.substring(47, query.length).split(", ");
+    return (a.map( function (x) { return parseInt(x); }).reduce( function (x, y) { if (x >= y) {return x;} else {return y;} }, 0)).toString();
   }
 
   if (query.toLowerCase().includes("plus")) {
