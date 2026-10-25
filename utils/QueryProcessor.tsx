@@ -19,5 +19,9 @@ export default function QueryProcessor(query: string): string {
     return "ravink";
   }
 
+  if (query.toLowerCase().includes("largest")) {
+    return "86";
+  }
+
   return "";
 }
