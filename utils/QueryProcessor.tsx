@@ -23,5 +23,12 @@ export default function QueryProcessor(query: string): string {
     return "86";
   }
 
+  if (query.toLowerCase().includes("plus")) {
+    var a = query.substring(8).split(" and ");
+    var b = parseInt(a[0], 10);
+    var c = parseInt(a[1].substring(0, a[1].length), 10);
+    return (b + c).toString();
+  }
+
   return "";
 }
