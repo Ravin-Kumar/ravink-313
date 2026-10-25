@@ -30,10 +30,8 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("plus")) {
-    var a = query.substring(8).split(" and ");
-    var b = parseInt(a[0], 10);
-    var c = parseInt(a[1].substring(0, a[1].length), 10);
-    return (b + c).toString();
+    var a = query.substring(8, query.length).split(" and ");
+    return (a.map( function (x) { return parseInt(x); }).reduce( function (x, y) { return x + y; }, 0)).toString();
   }
 
   return "";
